@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 export const sessionSlice = createSlice({
   name: 'session',
   initialState: {
-      isLoggedIn: true,
+      isLoggedIn: true, //change it false later after testing, for now it's true
       email: null,
       name: null,
   },
