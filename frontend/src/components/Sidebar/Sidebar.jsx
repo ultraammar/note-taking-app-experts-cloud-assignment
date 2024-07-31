@@ -7,13 +7,16 @@ import {
   MailOutlined,
   ProductOutlined,
   SettingOutlined,
+  UserOutlined,
 } from "@ant-design/icons";
 import { Menu } from "antd";
 import { Link, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../features/login/isLoggedIn/sessionSlice";
 
 const Sidebar = () => {
   const navigate = useNavigate();
+  const Dispatch = useDispatch();
 
   const [current, setCurrent] = useState("/");
 
@@ -25,45 +28,12 @@ const Sidebar = () => {
   };
 
   const logoutHandle = () => {
-    localStorage.clear();
+    Dispatch(logout());
     navigate("/login");
   };
 
   return (
     <>
-      {/* the AdminsRole Sidebar */}
-      {session.userType === "admin" && (
-        <Menu
-          onClick={onClick}
-          selectedKeys={[current]}
-          mode="vertical"
-          className="nav-ul"
-          theme="dark"
-          disabledOverflow="false"
-        >
-          <Menu.Item key="/" icon={<HomeOutlined />}>
-            <Link to="/admins/manage-authors">Authors</Link>
-          </Menu.Item>
-          <Menu.Item key="author_add" icon={<FileAddOutlined />}>
-            <Link to="/admins/manage-authors/new" rel="noopener noreferrer">
-              Add Author
-            </Link>
-          </Menu.Item>
-          <Menu.Item key="innovation" icon={<InfoCircleOutlined />}>
-            <Link
-              href="#"
-              // target="_blank"
-              rel="noopener noreferrer"
-            >
-              Account Info
-            </Link>
-          </Menu.Item>
-        </Menu>
-      )}
-
-      {/* the TeachersRole Sidebar */}
-
-      {session.userType === "teacher" && (
       <Menu
         onClick={onClick}
         selectedKeys={[current]}
@@ -72,25 +42,40 @@ const Sidebar = () => {
         theme="dark"
         disabledOverflow="false"
       >
-        <Menu.Item key="/" icon={<HomeOutlined />}>
-          <Link to="/teachers/manage-courses">Courses</Link>
-        </Menu.Item>
-        <Menu.Item key="course_add" icon={<FileAddOutlined />}>
-          <Link to="/teachers/manage-courses/new" rel="noopener noreferrer">
-            Add Course
-          </Link>
-        </Menu.Item>
-        <Menu.Item key="innovation" icon={<InfoCircleOutlined />}>
-          <Link
-            href="#"
-            // target="_blank"
-            rel="noopener noreferrer"
-          >
-            Account Info
-          </Link>
-        </Menu.Item>
+        <>
+          {session.isLoggedIn && (
+            <>
+              <Menu.Item key="/" icon={<HomeOutlined />}>
+                <Link to="/notes">Notes</Link>
+              </Menu.Item>
+              <Menu.Item key="note_add" icon={<FileAddOutlined />}>
+                <Link to="/notes/new" rel="noopener noreferrer">
+                  Add New Note
+                </Link>
+              </Menu.Item>
+
+              <Menu.Item icon={<UserOutlined />} onClick={logoutHandle}>
+                  Logout
+              </Menu.Item>
+            </>
+          )}
+
+          {!session.isLoggedIn && (
+            <>
+              <Menu.Item icon={<UserOutlined />} key="login">
+                <Link to="/login" rel="noopener noreferrer">
+                  Login
+                </Link>
+              </Menu.Item>
+              <Menu.Item icon={<UserOutlined />} key="signup">
+                <Link to="/signup" rel="noopener noreferrer">
+                  Signup
+                </Link>
+              </Menu.Item>
+            </>
+          )}
+        </>
       </Menu>
-      )}
     </>
   );
 };

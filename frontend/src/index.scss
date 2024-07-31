@@ -5,11 +5,19 @@ $twilightBlack: #1a1a1a;
 $twilightWhite: #f8f3f3;
 
 $max-width-desktop: 1000px;
-  
+
+@mixin theme($theme: rgb(248, 243, 243)) {
+  background: $twilightWhite;
+  color: $twilightBlack;
+}
+
+@mixin desktopSizing() {
+  max-width: $max-width-desktop;
+}
+
 body {
   font: 100% $font-stack; 
   margin: 0;
-  display: flex;
   box-sizing: border-box;
-}
+} 
 
