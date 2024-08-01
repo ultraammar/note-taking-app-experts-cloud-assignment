@@ -9,6 +9,7 @@ import NotesList from "./components/Notes/NotesList/NotesList";
 import Login from "./Pages/Login/Login";
 import Navbar from "./components/Navbar/Navbar";
 import axios from "axios";
+import Signup from "./Pages/Signup.jsx/Signup";
 
 axios.defaults.baseURL = "http://localhost:8081"; 
 
@@ -60,6 +61,16 @@ function App() {
               element={
                 // <RedirectIfLoggedIn>
                 <Login />
+                // </RedirectIfLoggedIn>
+              }
+            />
+
+            <Route
+              path="/signup"
+              exact
+              element={
+                // <RedirectIfLoggedIn>
+                <Signup />
                 // </RedirectIfLoggedIn>
               }
             />

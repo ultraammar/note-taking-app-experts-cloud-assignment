@@ -57,7 +57,7 @@ const dispatch = useDispatch();
     console.log("Success:", values);
     showLoading();  
     const response = await axios.post(
-      "/users", values
+      "/login", values
     );
     // console.log(response.json());
     const loginCredentials =  response.data;

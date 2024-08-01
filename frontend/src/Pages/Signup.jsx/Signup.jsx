@@ -4,6 +4,7 @@ import { Content } from "antd/es/layout/layout";
 
 import { useNavigate } from "react-router-dom";
 import { theme } from "antd";
+import SignupForm from '../../components/SignupForm/SignupForm';
 
 const Signup = () => {
     const {
@@ -30,7 +31,7 @@ const Signup = () => {
         }}
       >
         <h1 style={{ marginBottom: "50px" }}>Signup Page</h1>
-        {/* <SignupForm/> */}
+        <SignupForm/>
       </div>
     </Content>
   )

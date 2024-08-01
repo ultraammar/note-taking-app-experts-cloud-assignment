@@ -9,10 +9,20 @@ import {
   SettingOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import { Menu } from "antd";
+import { Menu, notification } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../features/login/isLoggedIn/sessionSlice";
+
+//notification popup
+const showNotification = (user) => {
+  console.log("Logging out!", user);
+  notification.info({
+    message: "Logging out!",
+    description: `Goodbye ${user}! we hope to see you again.`,
+    placement: "topLeft",
+  });
+};
 
 const Sidebar = () => {
   const navigate = useNavigate();
@@ -28,6 +38,7 @@ const Sidebar = () => {
   };
 
   const logoutHandle = () => {
+    showNotification(session.username);
     Dispatch(logout());
     navigate("/login");
   };

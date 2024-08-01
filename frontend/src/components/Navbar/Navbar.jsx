@@ -27,7 +27,7 @@
   const Navbar = () => {
     const navigate = useNavigate();
     const logoutHandle = () => {
-      showNotification(session.name);
+      showNotification(session.username);
       Dispatch(logout());
       navigate("/login");
     };

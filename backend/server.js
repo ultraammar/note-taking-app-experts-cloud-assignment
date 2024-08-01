@@ -22,7 +22,8 @@ app.get('/', (req, res) => {
   return res.json( 'backend side says hello!');
 }); 
 
-app.post('/users', usersController.login);
+app.post('/login', usersController.login);
+app.post('/signup', usersController.signup);
 
 app.listen(8081, () => {
     console.log('Server is running on port 8081');
