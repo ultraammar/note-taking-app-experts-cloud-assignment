@@ -35,35 +35,35 @@ const LoginForm = () => {
 
   //incorrect login error popup
   const showMessage = () => {
-    message.error('Login failed! incorrect email or password.');
+    message.error('Login failed! incorrect username or password.');
   };
   
   
   //login notification popup
-const showNotification = (user, user_type) => {
+const showNotification = (username, ) => {
   notification.success({
     message: 'Successfully logged in!',
-    description: `Hello ${user_type}, ${user}! You have successfully logged in.`,
+    description: `Hello ${username}! You have successfully logged in.`,
     placement: 'topLeft',
   });
 };
-  const dispatch = useDispatch();
-  //use the useSelector hook to get the value of isLoggedIn redux state
-  const {isLoggedIn, userType} = useSelector((state) => state.session); 
+//use the useSelector hook to get the value of isLoggedIn redux state
+const {isLoggedIn, userType} = useSelector((state) => state.session); 
 
+const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const onFinish = async (values) => {
+  const onFinish = async (values) => {    
     console.log("Success:", values);
     showLoading();  
-    const response = await axios.get(
-      "/users"
+    const response = await axios.post(
+      "/users", values
     );
     // console.log(response.json());
     const loginCredentials =  response.data;
     console.log(loginCredentials);
     const matchedCredentials = loginCredentials.find(
-      (cred) => cred.email === values.email && cred.password === values.password
+      (cred) => cred.username === values.username && cred.password === values.password
     );
 
     console.log("Matched credentials:", matchedCredentials);
@@ -71,22 +71,14 @@ const showNotification = (user, user_type) => {
       // set the boolean in redux state
       dispatch(
         setSession({
-          userType: matchedCredentials.user_type,
           isLoggedIn: true,
-          email: matchedCredentials.email,
+          username: matchedCredentials.username,
         })
       );
-      console.log(matchedCredentials.user_type);
-      showNotification(matchedCredentials.email, matchedCredentials.user_type);
-      if (matchedCredentials.user_type === "teacher") {
-        navigate("/teachers/manage-courses");
-      } else if (matchedCredentials.user_type === "admin") {
-        navigate("/admins/manage-authors");
-      }
+      console.log(matchedCredentials.username);
+      showNotification(matchedCredentials.username);
+      navigate("/notes");
     
-  
-      
-      
     } else {
       showMessage();
       console.log("Invalid credentials");
@@ -119,12 +111,12 @@ const showNotification = (user, user_type) => {
     >
       {loadingContextHolder}
       <Form.Item
-        label="Email"
-        name="email"
+        label="Username"
+        name="username"
         rules={[
           {
             required: true,
-            message: "Please input your email!",
+            message: "Please input your username!",
           },
         ]}
       >

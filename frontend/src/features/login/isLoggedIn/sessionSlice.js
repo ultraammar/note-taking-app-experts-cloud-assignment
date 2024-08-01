@@ -4,20 +4,17 @@ export const sessionSlice = createSlice({
   name: 'session',
   initialState: {
       isLoggedIn: true, //change it false later after testing, for now it's true
-      email: null,
-      name: null,
+      username: null,
   },
   reducers: { 
     setSession: (state, action) => {
-      const { isLoggedIn, email, name } = action.payload;
+      const { isLoggedIn, username } = action.payload;
       state.isLoggedIn = isLoggedIn;
-      state.email = email;
-      state.name = name;
+      state.username = username;
     },
     logout: (state) => {
       state.isLoggedIn = false;
-      state.name = null;
-      state.email = null;
+      state.username = null;
     }
   },
 });

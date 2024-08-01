@@ -1,36 +1,28 @@
+
+//dependencies
 const express = require('express');
 require('dotenv').config();
-const mysql = require('mysql');
 const cors = require('cors');
+const usersController = require('./controllers/usersController');
 
 
-
+//creating the app
 const app = express();
+
+//configure express app, for e.g to use json or other stuff like cors
 app.use(cors());
+app.use(express.json());
 
-const db = mysql.createConnection({
-    host: process.env.mysql_host,
-    port: process.env.mysql_port,
-    user: process.env.mysql_user,
-    password: process.env.mysql_password,
-    database: process.env.mysql_database, 
-    
 
-});
-   
 
+
+
+//routing
 app.get('/', (req, res) => {
   return res.json( 'backend side says hello!');
-});
+}); 
 
-app.get('/users', (req, res) => {
-  const sql = "select 1 + 2 as three;"
-  db.query(sql, (err, results) => {
-  if (err) return res.json(err);      
-    return res.json(results);
-  });
-  // return res.json( 'backend side says hello!');
-});
+app.post('/users', usersController.login);
 
 app.listen(8081, () => {
     console.log('Server is running on port 8081');

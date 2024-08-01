@@ -8,6 +8,9 @@ import Sidebar from "./components/Sidebar/Sidebar";
 import NotesList from "./components/Notes/NotesList/NotesList";
 import Login from "./Pages/Login/Login";
 import Navbar from "./components/Navbar/Navbar";
+import axios from "axios";
+
+axios.defaults.baseURL = "http://localhost:8081"; 
 
 function App() {
   const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
@@ -20,7 +23,7 @@ function App() {
   } = theme.useToken();
   return (
     <BrowserRouter>
-      <Layout
+      <Layout 
         style={{
           minHeight: "100vh",
         }}
