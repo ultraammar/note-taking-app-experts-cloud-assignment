@@ -121,7 +121,7 @@
 
                   
                   
-                    <Menu.Item icon={<UserOutlined />} onClick={logoutHandle}>
+                    <Menu.Item key="logout" icon={<UserOutlined />} onClick={logoutHandle}>
                         Logout
                     </Menu.Item>
                     </>

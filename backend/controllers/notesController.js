@@ -45,9 +45,20 @@ async function createNote(req, res) {
     });
 }
 
+async function updateNote(req, res) {
+    const { id } = req.params;
+    const { title, description } = req.body;
+    const sql = `UPDATE notes SET title = '${title}', description = '${description}' WHERE id = ${id};`;
+    db.query(sql, (err, results) => {
+        if (err) return res.status(500).json(err); // Send a 500 status code for errors
+        return res.status(200).json(results); // Send a 200 status code for successful deletion
+    });
+}
+
 module.exports = {
     getNotes,
     getNoteById,
     deleteNote,
-    createNote
+    createNote,
+    updateNote
 };

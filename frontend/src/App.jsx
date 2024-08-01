@@ -11,6 +11,9 @@ import Navbar from "./components/Navbar/Navbar";
 import axios from "axios";
 import Signup from "./Pages/Signup.jsx/Signup";
 import NotesAdd from "./components/Notes/NotesAdd/NotesAdd";
+import NotesUpdate from "./components/Notes/NotesUpdate/NotesUpdate";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+import RedirectIfLoggedIn from "./components/ProtectedRoute/RedirectIfLoggedIn";
 
 axios.defaults.baseURL = "http://localhost:8081"; 
 
@@ -49,20 +52,15 @@ function App() {
             </Sider>
           )}
           <Routes>
-            <Route path="/" element={<Navigate to="/login" replace />} />
-            <Route
-              path="/teachers/"
-              exact
-              element={<Navigate to="/teachers/manage-courses" replace />}
-            />
+            <Route path="/" element={<Navigate to="/login" replace />} /> 
 
             <Route
               path="/login"
               exact
               element={
-                // <RedirectIfLoggedIn>
+                <RedirectIfLoggedIn>
                 <Login />
-                // </RedirectIfLoggedIn>
+                </RedirectIfLoggedIn>
               }
             />
 
@@ -70,27 +68,36 @@ function App() {
               path="/signup"
               exact
               element={
-                // <RedirectIfLoggedIn>
+                <RedirectIfLoggedIn>
                 <Signup />
-                // </RedirectIfLoggedIn>
+                </RedirectIfLoggedIn>
               }
             />
             <Route
               path="/notes"
               exact
               element={
-                // <ProtectedRoute>
+                <ProtectedRoute>
                 <NotesList />
-                // </ProtectedRoute>
-              }
+                </ProtectedRoute>
+              } 
+            />
+            <Route
+              path="/notes/update/:id"
+              exact
+              element={
+                <ProtectedRoute>
+                <NotesUpdate   />
+                 </ProtectedRoute>
+              } 
             />
             <Route
               path="/notes/new"
               exact
               element={
-                // <ProtectedRoute>
+                <ProtectedRoute>
                 <NotesAdd />
-                // </ProtectedRoute>
+                 </ProtectedRoute>
               }
             />
           </Routes>

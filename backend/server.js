@@ -30,6 +30,7 @@ app.post('/signup', usersController.signup);
 app.post('/notes/getList', notesController.getNotes);
 app.post('/notes/new', notesController.createNote);
 app.get('/notes/:id', notesController.getNoteById);
+app.put('/notes/:id', notesController.updateNote);
 app.delete('/notes/:id', notesController.deleteNote);
 
 app.listen(8081, () => {

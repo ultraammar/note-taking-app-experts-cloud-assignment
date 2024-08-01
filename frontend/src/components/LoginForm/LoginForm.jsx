@@ -85,7 +85,7 @@ const dispatch = useDispatch();
       }
     } finally {
     // Dismiss manually and asynchronously
-      setTimeout(() => loadingApi.destroy(), 2500);
+      setTimeout(() => loadingApi.destroy(), 250);
     }
   };
 

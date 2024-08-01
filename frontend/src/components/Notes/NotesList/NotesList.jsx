@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import "./NotesList.scss"
-import { Button, Flex, Layout, Space, Table, theme } from 'antd'
+import { Button, Flex, Layout, message, Space, Table, theme } from 'antd'
 import { Link } from 'react-router-dom'
 import { PlusSquareTwoTone } from '@ant-design/icons'
 import axios from 'axios'
@@ -8,6 +8,16 @@ import GenericModal from '../../common/Modal/GenericModal'
 import { useDispatch, useSelector } from 'react-redux'
 
 const NotesList = () => {
+  //loading indicator message popup
+const [loadingApi, loadingContextHolder] = message.useMessage();
+const showLoading = (message) => {
+  loadingApi.open({
+    type: 'loading',
+    content: `${message}`,  
+    duration: 0,
+  });
+};
+
   const dispatch = useDispatch();
   const session = useSelector((state) => state.session);
 
@@ -37,12 +47,15 @@ const NotesList = () => {
   const [data, setData] = useState([]);
 const fetchData = async () => {     
     try {
-      
+      showLoading("Fetching notes...");
       const response = await axios.post("/notes/getList", {user_id: session.user_id});
       setData(response.data);
     } catch (error) {
       console.log(error);     
-    }
+    }finally {
+      // Dismiss manually and asynchronously
+        setTimeout(() => loadingApi.destroy(), 0);
+      }
   }
 
   useEffect(() => {
@@ -72,7 +85,7 @@ const fetchData = async () => {
       width: 100,
       render: (_, record) => (
         <Space size="middle">
-          <Link to={`/notes/${record.id}`}>Edit</Link>
+          <Link to={`/notes/update/${record.id}`}>Edit</Link>
           <Link onClick={() => handleDelete(record.id)}>Delete</Link>
         </Space>
       ),
@@ -89,6 +102,7 @@ const fetchData = async () => {
         backgroundRepeat: "no-repeat",
       }}
     >
+      {loadingContextHolder}
       <Flex gap="small" wrap justify="right">
         <Link to={`/notes/new`}>
           <Button
