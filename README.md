@@ -1,4 +1,4 @@
-## Note Taking App for Experts Cloud
+# Note Taking App for Experts Cloud
 This project is a simple note taking app built as part of the Experts Cloud screening process. It utilizes React for the frontend, Vite for a faster development experience, and HMR (Hot Module Replacement) for a seamless development workflow.
 
 The frontend is set up using Vite with the @vitejs/plugin-react plugin for fast refresh.
@@ -6,32 +6,32 @@ The frontend is set up using Vite with the @vitejs/plugin-react plugin for fast 
 Getting Started
 To get started, clone this repository and install both the frontend and backend dependencies using the following commands:
 
-# Clone the repository
+## Clone the repository
 git clone https://github.com/YourUsername/note-taking-app.git
 
-# Navigate to the frontend directory
+## Navigate to the frontend directory
 cd note-taking-app/frontend
 
-# Install the frontend dependencies
+## Install the frontend dependencies
 npm install
 
-# Navigate to the backend directory
+## Navigate to the backend directory
 cd note-taking-app/backend
 
-# Install the backend dependencies
+## Install the backend dependencies
 npm install
 Running the Frontend
 To run the frontend, use the following command:
 
-# Run the frontend
+## Run the frontend
 npm run dev
 This will start the development server on http://localhost:5000/ by default.
 
 Running the Backend
 To run the backend, use the following command:
 
-# Run the backend
-npm run start
+## Run the backend
+npm run dev
 The backend will start running on http://localhost:3000/.
 
 Project Structure
