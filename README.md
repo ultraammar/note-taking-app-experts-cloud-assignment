@@ -7,16 +7,16 @@ Getting Started
 To get started, clone this repository and install both the frontend and backend dependencies using the following commands:
 
 ## Clone the repository
-git clone https://github.com/YourUsername/note-taking-app.git
+git clone https://github.com/ultraammar/note-taking-app-experts-cloud-assignment.git
 
 ## Navigate to the frontend directory
-cd note-taking-app/frontend
+cd note-taking-app-experts-cloud-assignment/frontend
 
 ## Install the frontend dependencies
 npm install
 
 ## Navigate to the backend directory
-cd note-taking-app/backend
+cd note-taking-app-experts-cloud-assignment/backend
 
 ## Install the backend dependencies
 npm install
@@ -25,14 +25,14 @@ To run the frontend, use the following command:
 
 ## Run the frontend
 npm run dev
-This will start the development server on http://localhost:5000/ by default.
+This will start the development server on http://localhost:5173/ by default.
 
 Running the Backend
 To run the backend, use the following command:
 
 ## Run the backend
 npm run dev
-The backend will start running on http://localhost:3000/.
+The backend will start running on http://localhost:8081/.
 
 Project Structure
 Here is a brief overview of the key files and folders in the project:
