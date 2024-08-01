@@ -16,7 +16,7 @@ app.use(cors({
   origin: ['https://note-taking-app-experts-cloud-assignment.vercel.app', 'http://localhost:5173'],
   //origin: process.env.NODE_ENV === 'production' ? 'https://note-taking-app-experts-cloud-assignment.vercel.app' : true,
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-  credentials: true
+  exposedHeaders: ['Access-Control-Allow-Origin']
 }));
 app.use(express.json());
 
