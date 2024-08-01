@@ -15,7 +15,8 @@ import NotesUpdate from "./components/Notes/NotesUpdate/NotesUpdate";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import RedirectIfLoggedIn from "./components/ProtectedRoute/RedirectIfLoggedIn";
 
-axios.defaults.baseURL = "http://localhost:8081"; 
+// axios.defaults.baseURL = "http://localhost:8081"; 
+axios.defaults.baseURL = "https://note-taking-app-experts-cloud-assignment-backend.vercel.app"; 
 
 function App() {
   const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
