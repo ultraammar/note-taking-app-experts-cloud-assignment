@@ -5,6 +5,7 @@ require('dotenv').config();
 const cors = require('cors');
 const usersController = require('./controllers/usersController');
 const notesController = require('./controllers/notesController');
+const db = require('./database/db_connect');
 
 
 //creating the app
@@ -27,6 +28,12 @@ app.use(express.json());
 
 //routing
 app.get('/', (req, res) => {
+  //test db query
+  const sql = `SELECT * FROM users;`;
+  db.query(sql, (err, results) => {
+    if (err) return res.status(500).json({ message: "unknown error, check the console.", error: err });
+    return res.json(results);
+  });
   return res.json( 'backend side says hello!');
 }); 
 //user routes
