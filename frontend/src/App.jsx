@@ -10,6 +10,7 @@ import Login from "./Pages/Login/Login";
 import Navbar from "./components/Navbar/Navbar";
 import axios from "axios";
 import Signup from "./Pages/Signup.jsx/Signup";
+import NotesAdd from "./components/Notes/NotesAdd/NotesAdd";
 
 axios.defaults.baseURL = "http://localhost:8081"; 
 
@@ -80,6 +81,15 @@ function App() {
               element={
                 // <ProtectedRoute>
                 <NotesList />
+                // </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/notes/new"
+              exact
+              element={
+                // <ProtectedRoute>
+                <NotesAdd />
                 // </ProtectedRoute>
               }
             />

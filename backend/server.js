@@ -28,7 +28,7 @@ app.post('/signup', usersController.signup);
 
 //note routes
 app.post('/notes/getList', notesController.getNotes);
-//todo new note route
+app.post('/notes/new', notesController.createNote);
 app.get('/notes/:id', notesController.getNoteById);
 app.delete('/notes/:id', notesController.deleteNote);
 

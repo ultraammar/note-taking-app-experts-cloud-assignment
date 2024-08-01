@@ -33,8 +33,21 @@ async function deleteNote(req, res) {
     });
 }
 
+async function createNote(req, res) {
+    const user_id = req.headers.user_id;
+    console.log(req.body, req.headers.user_id);
+    const {title, description} = req.body;
+    const sql = `INSERT INTO notes (title, description, user_id) VALUES ('${title}', '${description}', ${user_id});`; 
+    db.query(sql, (err, results) => {
+        console.log(err, results);
+        if (err) return res.status(500).json(err); // Send a 500 status code for errors
+        return res.status(200).json(results); // Send a 200 status code for successful deletion
+    });
+}
+
 module.exports = {
     getNotes,
     getNoteById,
-    deleteNote
+    deleteNote,
+    createNote
 };
