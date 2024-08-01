@@ -2,18 +2,18 @@
 This project is a simple note taking app built as part of the Experts Cloud screening process. It utilizes React for the frontend, Vite for a faster development experience, and HMR (Hot Module Replacement) for a seamless development workflow. as choice, It's using MySQL as I never used that for a ReactJs project in the past, I normally tended to use MongoDB, Postgres, json-server etc
 
 ## Frontend Technologies
-React - The frontend library for building reusable UI components.
-Vite - The tool that provides a faster development experience and HMR.
-Ant Design - a good UI Library
-Formik - form handling library
-Yup - Form Validation handling library
-Sass - css pre-processor
-Redux RTK - state management
+- React:  The frontend library for building reusable UI components.
+- Vite: The tool that provides a faster development experience and HMR.
+- Ant Design: a good UI Library
+- Formik: form handling library
+- Yup: Form Validation handling library
+- Sass: css pre-processor
+- Redux RTK: state management
 
 ## Backend Technologies
-MySQL - database
-NodeJS - runtime environment
-ExpressJs - framework 
+- MySQL: database
+- NodeJS: runtime environment
+- ExpressJs: framework 
 
 Getting Started
 To get started, clone this repository and install both the frontend and backend dependencies using the following commands:
