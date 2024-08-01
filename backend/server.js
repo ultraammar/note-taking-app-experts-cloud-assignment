@@ -34,7 +34,7 @@ app.get('/', (req, res) => {
     if (err) return res.status(500).json({ message: "unknown error, check the console.", error: err });
     return res.json(results);
   });
-  return res.json( 'backend side says hello!');
+  // return res.json( 'backend side says hello!');
 }); 
 //user routes
 app.post('/login', usersController.login);
