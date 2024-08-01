@@ -1,7 +1,19 @@
 # Note Taking App for Experts Cloud
 This project is a simple note taking app built as part of the Experts Cloud screening process. It utilizes React for the frontend, Vite for a faster development experience, and HMR (Hot Module Replacement) for a seamless development workflow. as choice, It's using MySQL as I never used that for a ReactJs project in the past, I normally tended to use MongoDB, Postgres, json-server etc
 
-The frontend is set up using Vite with the @vitejs/plugin-react plugin for fast refresh.
+## Frontend Technologies
+React - The frontend library for building reusable UI components.
+Vite - The tool that provides a faster development experience and HMR.
+Ant Design - a good UI Library
+Formik - form handling library
+Yup - Form Validation handling library
+Sass - css pre-processor
+Redux RTK - state management
+
+## Backend Technologies
+MySQL - database
+NodeJS - runtime environment
+ExpressJs - framework 
 
 Getting Started
 To get started, clone this repository and install both the frontend and backend dependencies using the following commands:
@@ -44,9 +56,9 @@ Here is a brief overview of the key files and folders in the project:
 - backend/server.js: The main entry point for the backend.
 - backend/vercel.json: Contains configuration for deploying the backend to Vercel.
 - README.md: This file containing project information.
-Frontend Technologies
-React - The frontend library for building reusable UI components.
-Vite - The tool that provides a faster development experience and HMR.
+
+
+
 Deployment
 The backend is set up for deployment on Vercel with the appropriate configuration in the vercel.json file. To deploy the backend, follow the Vercel guidelines for deploying serverless functions.
 
