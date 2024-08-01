@@ -11,7 +11,13 @@ const notesController = require('./controllers/notesController');
 const app = express();
 
 //configure express app, for e.g to use json or other stuff like cors
-app.use(cors());
+app.use(cors({
+  //origin: 'https://note-taking-app-experts-cloud-assignment.vercel.app',
+  origin: ['https://note-taking-app-experts-cloud-assignment.vercel.app', 'http://localhost:3000'],
+  //origin: process.env.NODE_ENV === 'production' ? 'https://note-taking-app-experts-cloud-assignment.vercel.app' : true,
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+  credentials: true
+}));
 app.use(express.json());
 
 
