@@ -1,11 +1,14 @@
 const mysql = require('mysql');
+if (process.env.NODE_ENV != "production"){
+    require('dotenv').config();
+}      
 
 const db = mysql.createConnection({
-    host: "mysql-3be8f42a-ultraammar-09ae.e.aivencloud.com",
-    port: "12512",
-    user: "avnadmin",
-    password: "AVNS_lsVS1ASx4RRa6fKIQst",
-    database: "defaultdb", 
+    host: process.env.mysql_host,
+    port: process.env.mysql_port,
+    user: process.env.mysql_user,
+    password: process.env.mysql_password,
+    database: process.env.mysql_database, 
 });
 
 module.exports = db;
