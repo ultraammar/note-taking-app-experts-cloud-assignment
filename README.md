@@ -37,13 +37,13 @@ The backend will start running on http://localhost:8081/.
 Project Structure
 Here is a brief overview of the key files and folders in the project:
 
-frontend/: Contains the frontend code implemented using React and Vite.
-backend/: Contains the backend server code.
-frontend/src/App.jsx: The main entry point for the frontend.
-frontend/index.html: The entry point for the frontend, contains the HTML and boilerplate code.
-backend/server.js: The main entry point for the backend.
-backend/vercel.json: Contains configuration for deploying the backend to Vercel.
-README.md: This file containing project information.
+- frontend/: Contains the frontend code implemented using React and Vite.
+- backend/: Contains the backend server code.
+- frontend/src/App.jsx: The main entry point for the frontend.
+- frontend/index.html: The entry point for the frontend, contains the HTML and boilerplate code.
+- backend/server.js: The main entry point for the backend.
+- backend/vercel.json: Contains configuration for deploying the backend to Vercel.
+- README.md: This file containing project information.
 Frontend Technologies
 React - The frontend library for building reusable UI components.
 Vite - The tool that provides a faster development experience and HMR.
