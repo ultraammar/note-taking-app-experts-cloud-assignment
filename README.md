@@ -1,4 +1,4 @@
-##Note Taking App for Experts Cloud
+## Note Taking App for Experts Cloud
 This project is a simple note taking app built as part of the Experts Cloud screening process. It utilizes React for the frontend, Vite for a faster development experience, and HMR (Hot Module Replacement) for a seamless development workflow.
 
 The frontend is set up using Vite with the @vitejs/plugin-react plugin for fast refresh.
