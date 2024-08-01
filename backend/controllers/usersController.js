@@ -4,16 +4,29 @@ const db = require("../database/db_connect");
 async function login(req, res) {
   const { username, password } = req.body;
   console.log(username, password);
-  const sql = `SELECT * FROM users WHERE username = '${username}' AND password = '${password}';`;
-  db.query(sql, (err, results) => {
-    if (err) return res.status(500).json(err); // Send a 500 status code for errors
-    if (results.length) {
-      // If a user is found, send a 200 status code
+
+  // Check if the username already exists
+  const checkSql = `SELECT * FROM users WHERE username = '${username}';`;
+  db.query(checkSql, (err, existingUser) => {
+    if (err) return res.status(500).json({ message: "unknown error, check the console.", error: err });
+    if (existingUser.length) {
+      // Check if the password is correct
+      const sql = `SELECT * FROM users WHERE username = '${username}' AND password = '${password}';`;
+      db.query(sql, (err, results) => {
+        if (err) return res.status(500).json({ message: "unknown error, check the console.", error: err });
+
+        if (results.length) {
+          // If a user is found with the correct password, send a 200 status code
       return res.status(200).json(results);
     } else {
-      // No user was found, send a 404 status code
-      return res.status(404).json({ message: "Username or password is incorrect." });
+          // Incorrect password, send a 401 status code
+          return res.status(401).json({ message: "User exists, but password is incorrect." });
     }
+  });
+    } else {
+      // Username not found, send a 404 status code
+      return res.status(404).json({ message: "Username does not exist." });
+}
   });
 }
 

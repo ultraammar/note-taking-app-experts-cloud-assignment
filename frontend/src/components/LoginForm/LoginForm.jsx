@@ -55,36 +55,38 @@ const dispatch = useDispatch();
 
   const onFinish = async (values) => {    
     console.log("Success:", values);
-    showLoading();  
-    const response = await axios.post(
-      "/login", values
-    );
-    // console.log(response.json());
-    const loginCredentials =  response.data;
-    console.log(loginCredentials);
+    showLoading();
+
+    try {
+      const response = await axios.post("/login", values);
+      const loginCredentials = response.data;
     const matchedCredentials = loginCredentials.find(
       (cred) => cred.username === values.username && cred.password === values.password
     );
 
-    console.log("Matched credentials:", matchedCredentials);
     if (matchedCredentials) {
       // set the boolean in redux state
       dispatch(
         setSession({
           isLoggedIn: true,
           username: matchedCredentials.username,
+          user_id: matchedCredentials.id,
         })
       );
-      console.log(matchedCredentials.username);
-      showNotification(matchedCredentials.username);
+        showNotification(matchedCredentials.username);
       navigate("/notes");
-    
     } else {
-      showMessage();
+      showMessage();  
       console.log("Invalid credentials");
     }
+    } catch (error) {
+      if(error.response){
+        message.error(error.response.data.message);
+      }
+    } finally {
     // Dismiss manually and asynchronously
-    setTimeout(loadingApi.destroy, 2500);
+      setTimeout(() => loadingApi.destroy(), 2500);
+    }
   };
 
   // useNavigate to route to user views
