@@ -15,14 +15,14 @@ const db = require('./database/db_connect');
 const app = express();
 
 //configure express app, for e.g to use json or other stuff like cors
-// app.use(cors({
-//   //origin: 'https://note-taking-app-experts-cloud-assignment.vercel.app',
-//   origin: "https://note-taking-app-experts-cloud-assignment.vercel.app",
-//   //origin: process.env.NODE_ENV === 'production' ? 'https://note-taking-app-experts-cloud-assignment.vercel.app' : true,
-//   methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-//   withCredentials: true,
+app.use(cors({
+  //origin: 'https://note-taking-app-experts-cloud-assignment.vercel.app',
+  origin: "https://note-taking-app-experts-cloud-assignment.vercel.app",
+  //origin: process.env.NODE_ENV === 'production' ? 'https://note-taking-app-experts-cloud-assignment.vercel.app' : true,
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+  withCredentials: true,
   
-// }));
+}));
 app.use(express.json());
 
 
